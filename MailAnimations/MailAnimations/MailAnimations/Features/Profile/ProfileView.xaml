@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:base="clr-namespace:MailAnimations.Base"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:features="clr-namespace:MailAnimations.Features"
+                      xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                      xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                      xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+                      x:Class="MailAnimations.Features.ProfileView"
+                      x:TypeArguments="features:ProfileViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LblBase" TargetType="Label" >
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="Margin" Value="10,0" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            </Style>
+            <Style x:Key="LblTitle" TargetType="Label" BasedOn="{StaticResource LblBase}">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="TextColor" Value="{StaticResource DarkFontColor}" />
+            </Style>
+            <Style x:Key="LblValue" TargetType="Label" BasedOn="{StaticResource LblBase}">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HeightRequest" Value="25" />
+                <Setter Property="TextColor" Value="{StaticResource SummaryTextColor}" />
+            </Style>
+
+            <Style x:Key="BvSeparator" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource BorderColor}" />
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="120" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView x:Name="SvContent"
+                        Grid.Row="1" Grid.RowSpan="2" 
+                        Padding="0,120,0,0">
+
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <Label Style="{StaticResource LblTitle}" Text="Nombre" />
+                    <Label x:Name="LblNameValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Apellidos" />
+                    <Label x:Name="LblSurnameValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Email" />
+                    <Label x:Name="LblMailValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Teléfono" />
+                    <Label x:Name="LblPhoneValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Dirección" />
+                    <Label x:Name="LblAddressValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Email de recuperación" />
+                    <Label x:Name="LblRecoveryMailValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Notificaciones" />
+                    <Label x:Name="LblNotificationsValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Espacio de almacenamiento" />
+                    <Label x:Name="LblStoredMBValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Utilizar firma" />
+                    <Label x:Name="LblSignatureValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Marcar no leídos" />
+                    <Label x:Name="LblMarkNotReadValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Notificación de emails leidos" />
+                    <Label x:Name="LblNotifyWhenReadValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+
+                    <Label Style="{StaticResource LblTitle}" Text="Almacenar en la nube" />
+                    <Label x:Name="LblCloudStorageValue" Style="{StaticResource LblValue}" />
+                    <BoxView Style="{StaticResource BvSeparator}" />
+                </StackLayout>
+            </ScrollView>
+
+            <Grid x:Name="GridImageBackgroud"
+                  BackgroundColor="{StaticResource SecondaryBackgroundColor}" 
+                  Grid.Row="1" 
+                  RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="119" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+
+                <BoxView BackgroundColor="{StaticResource BorderColor}"
+                         Grid.Row="1" 
+                         HeightRequest="1"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Grid>
+
+            <Grid x:Name="GridHeader"
+                  BackgroundColor="{StaticResource SecondaryBackgroundColor}" 
+                  Grid.Row="0" 
+                  RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+
+                <ImageButton x:Name="BtnBack"
+                             BackgroundColor="Transparent"
+                             Source="Back.png"
+                             HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
+                             Margin="10" />
+
+                <Label x:Name="LblTitle"
+                        FontSize="16" FontAttributes="Bold"
+                        Text="INFORMACIÓN USUARIO"
+                        TextColor="{StaticResource PrimaryColor}"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       Margin="0,10"
+                        HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+
+            <ffimageloading:CachedImage x:Name="ImgProfilePicture" 
+                                            Grid.Row="0" Grid.RowSpan="2"
+                                            sharedTransitions:Transition.Name="profiletransition"
+                                            BackgroundColor="Transparent"
+                                            Source="Profile.png"
+                                            Aspect="AspectFit"
+							                HeightRequest="100" WidthRequest="100"
+                                            Margin="10,60,10,10"
+                                            HorizontalOptions="Center" VerticalOptions="Start">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation/>
+                </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+
+        </Grid>
+    </ContentPage.Content>
+</base:BaseContentPage>

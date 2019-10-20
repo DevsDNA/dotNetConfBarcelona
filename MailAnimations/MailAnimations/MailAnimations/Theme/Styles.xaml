@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="MailAnimations.Theme.Styles">
+
+    <Color x:Key="PrimaryColor">Green</Color> 
+    <Color x:Key="PrimaryBackgroundColor">White</Color>
+    <Color x:Key="SecondaryBackgroundColor">WhiteSmoke</Color>
+    <Color x:Key="AlertColor">Red</Color>
+    <Color x:Key="BorderColor">LightGray</Color>
+    <Color x:Key="SummaryTextColor">Gray</Color>
+
+    <Color x:Key="DarkFontColor">Black</Color>
+    <Color x:Key="LightFontColor">White</Color>
+    <Color x:Key="DisabledColor">Gray</Color>
+
+</ResourceDictionary>

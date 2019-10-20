@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:base="clr-namespace:MailAnimations.Base"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:effects="clr-namespace:MailAnimations.Effects"
+                      xmlns:features="clr-namespace:MailAnimations.Features"
+                      xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                      xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                      xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+                      xmlns:controls="clr-namespace:MailAnimations.Controls"
+                      x:Class="MailAnimations.Features.MailListView"
+                      x:TypeArguments="features:MailListViewModel">
+    <ContentPage.Content>
+        <Grid x:Name="GridContent"
+              RowSpacing="0"
+              Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ListView x:Name="LvAllMails" 
+                      Grid.RowSpan="4"
+                      CachingStrategy="RecycleElement"
+                      BackgroundColor="Transparent" 
+                      SelectionMode="None" IsPullToRefreshEnabled="False"
+                      VerticalScrollBarVisibility="Never" HasUnevenRows="True" 
+                      SeparatorVisibility="None" IsGroupingEnabled="False"
+                      Scale="0" Opacity="0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView.Header>
+                    <Grid HeightRequest="150" />
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <features:MailListItemViewCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView x:Name="LvNotReadMails" 
+                      Grid.RowSpan="4"
+                      CachingStrategy="RecycleElement"
+                      BackgroundColor="Transparent" 
+                      SelectionMode="Single" IsPullToRefreshEnabled="False"
+                      VerticalScrollBarVisibility="Never" HasUnevenRows="True" 
+                      SeparatorVisibility="None" IsGroupingEnabled="False"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView.Header>
+                    <Grid HeightRequest="150" />
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <features:MailListItemViewCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ActivityIndicator x:Name="AiAllMails"
+                            Grid.RowSpan="4"
+                            Color="{StaticResource PrimaryColor}"
+                            IsVisible="True" IsRunning="True"
+                            HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <Grid x:Name="GridHeader"
+                  Grid.Row="0" Grid.RowSpan="2"
+                  RowSpacing="0" ColumnSpacing="5"
+                  BackgroundColor="{StaticResource SecondaryBackgroundColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+
+                <ffimageloading:CachedImage x:Name="ImgProfilePicture" 
+                                            Grid.Row="0" Grid.Column="0"
+                                            sharedTransitions:Transition.Name="profiletransition"
+                                            BackgroundColor="Transparent"
+                                            Source="Profile.png"
+                                            Aspect="AspectFit"
+							                Margin="10,10,0,0" HeightRequest="50" WidthRequest="50"
+                                            HorizontalOptions="Center" VerticalOptions="Center">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation/>
+                    </ffimageloading:CachedImage.Transformations>
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapImgProfile" />
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+
+                <controls:CustomSwitcher x:Name="CsMailListSelector"
+                                         Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                         LeftText="Todos" RightText="No leidos"
+                                         Margin="10,0"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+
+                <BoxView BackgroundColor="{StaticResource BorderColor}"
+                         Grid.Row="2" Grid.ColumnSpan="3" 
+                         HeightRequest="1"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+            </Grid>
+            <Frame x:Name="FrameSummary"
+                   Grid.Row="1" Grid.RowSpan="2"
+                   CornerRadius="8"
+                   BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+                   HasShadow="False"
+                   BorderColor="{StaticResource BorderColor}"
+                   Padding="10"
+                   Margin="50,0">
+                <Grid>
+                    <Grid x:Name="GridSummary" 
+                          Scale="0" Opacity="0"
+                          RowSpacing="0" ColumnSpacing="5"
+                          HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="LblNotReadMailsValue"
+                               Grid.Row="0" Grid.Column="0"
+                               FontSize="16" FontAttributes="Bold"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="End" VerticalTextAlignment="Center"
+                               HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        <Label x:Name="LblNotReadMails"
+                               Grid.Row="0" Grid.Column="1"
+                               Text="No leidos"
+                               FontSize="14"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                               HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+
+
+                        <Label x:Name="LblCheckedMailsValue"
+                               Grid.Row="1" Grid.Column="0"
+                               FontSize="16" FontAttributes="Bold"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="End" VerticalTextAlignment="Center"
+                               HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        <Label x:Name="LblCheckedMails"
+                               Grid.Row="1" Grid.Column="1"
+                               Text="Marcados"
+                               FontSize="14"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                               HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+
+                        <Label x:Name="LblRemovedMailsValue"
+                               Grid.Row="2" Grid.Column="0"
+                               FontSize="16" FontAttributes="Bold"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="End" VerticalTextAlignment="Center"
+                               HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        <Label x:Name="LblRemovedMails"
+                               Grid.Row="2" Grid.Column="1"
+                               Text="Eliminados"
+                               FontSize="14"
+                               TextColor="{StaticResource SummaryTextColor}"
+                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                               HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                    </Grid>
+                    <ActivityIndicator x:Name="AiSummary"
+                                       Color="{StaticResource PrimaryColor}"
+                                       IsVisible="True" IsRunning="True"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <BoxView x:Name="BvMenuVisibility"
+                     Grid.RowSpan="4"
+                     BackgroundColor="{StaticResource DisabledColor}"
+                     Opacity="0"
+                     IsVisible="False">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapBvMenuVisibility" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Grid x:Name="GridMenu"
+                  Grid.Row="3"
+                  HeightRequest="260" WidthRequest="300"
+                  RowSpacing="10" ColumnSpacing="0"
+                  BackgroundColor="Transparent"
+                  TranslationY="215"
+                  Margin="0,0,0,10"
+                  HorizontalOptions="Center" VerticalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+
+                <ImageButton x:Name="BtnMenu"
+                             HeightRequest="40" WidthRequest="40"
+                             CornerRadius="20"
+                             Source="Menu.png"
+                             Aspect="AspectFit"
+                             Padding="10"
+                             BackgroundColor="{StaticResource PrimaryColor}"
+                             HorizontalOptions="Center" VerticalOptions="Center" />
+                <Frame x:Name="FrameMenuOptions"
+                       Grid.Row="1"
+                       CornerRadius="8"
+                       BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+                       HasShadow="False"
+                       BorderColor="{StaticResource BorderColor}"
+                       Padding="0"
+                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <Grid x:Name="GridMenuOptions" 
+                              RowSpacing="0" ColumnSpacing="0"
+                              HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView BackgroundColor="{StaticResource BorderColor}"
+                                 Grid.Row="1" Grid.ColumnSpan="3" 
+                                 HeightRequest="1"
+                                 Margin="20,0"
+                                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <BoxView BackgroundColor="{StaticResource BorderColor}"
+                                 Grid.Column="1" Grid.Row="0" 
+                                 WidthRequest="1"
+                                 Margin="0,10"
+                                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <BoxView BackgroundColor="{StaticResource BorderColor}"
+                                 Grid.Column="1" Grid.Row="2" 
+                                 WidthRequest="1"
+                                 Margin="0,10"
+                                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+                        <StackLayout Spacing="10" 
+                                     Grid.Row="0" Grid.Column="0"
+                                     HorizontalOptions="Center" VerticalOptions="Center">
+                            <ffimageloading:CachedImage x:Name="ImgCreateMail" 
+                                                        BackgroundColor="Transparent"
+                                                        Source="Create.png"
+                                                        Aspect="AspectFit"
+							                            HeightRequest="30" WidthRequest="30"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Nuevo"
+                                   TextColor="{StaticResource SummaryTextColor}" FontSize="10"
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+                        <StackLayout Spacing="10" 
+                                     Grid.Row="0" Grid.Column="2"
+                                     HorizontalOptions="Center" VerticalOptions="Center">
+                            <ffimageloading:CachedImage x:Name="ImgBin" 
+                                                        BackgroundColor="Transparent"
+                                                        Source="Bin.png"
+                                                        Aspect="AspectFit"
+							                            HeightRequest="30" WidthRequest="30"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Papeleta"
+                                   TextColor="{StaticResource SummaryTextColor}" FontSize="10"
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+
+                        <StackLayout Spacing="10" 
+                                     Grid.Row="2" Grid.Column="0"
+                                     HorizontalOptions="Center" VerticalOptions="Center">
+                            <ffimageloading:CachedImage x:Name="ImgEraser" 
+                                                        BackgroundColor="Transparent"
+                                                        Source="Eraser.png"
+                                                        Aspect="AspectFit"
+							                            HeightRequest="30" WidthRequest="30"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Borradores"
+                                   TextColor="{StaticResource SummaryTextColor}" FontSize="10"
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+
+                        <StackLayout Spacing="10" 
+                                     Grid.Row="2" Grid.Column="2"
+                                     HorizontalOptions="Center" VerticalOptions="Center">
+                            <ffimageloading:CachedImage x:Name="ImgTools" 
+                                                        BackgroundColor="Transparent"
+                                                        Source="Tools.png"
+                                                        Aspect="AspectFit"
+							                            HeightRequest="30" WidthRequest="30"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Ajustes"
+                                   TextColor="{StaticResource SummaryTextColor}" FontSize="10"
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+
+        </Grid>
+              
+    </ContentPage.Content>
+</base:BaseContentPage>

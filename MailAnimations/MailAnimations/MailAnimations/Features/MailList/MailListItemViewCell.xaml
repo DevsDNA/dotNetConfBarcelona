@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:ReactiveViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:base="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                       xmlns:models="clr-namespace:MailAnimations.Models"
+                       xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                       x:Class="MailAnimations.Features.MailListItemViewCell"
+                       x:TypeArguments="models:Mail">
+
+    <Grid x:Name="GridMain"
+          RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89" />
+            <RowDefinition Height="0" />
+            <RowDefinition Height="1" />
+        </Grid.RowDefinitions>
+        
+        <Grid x:Name="GridContent" 
+              RowSpacing="0" ColumnSpacing="2"
+              Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.RowSpan="3" Grid.Column="0">
+                <BoxView x:Name="BvCircleSource"
+                         HeightRequest="50" WidthRequest="50"
+                         CornerRadius="25"
+                         VerticalOptions="Center" HorizontalOptions="Center" />
+                <Label x:Name="LblCircleSource"
+                       FontSize="22" TextColor="{StaticResource LightFontColor}"
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                       VerticalOptions="Center" HorizontalOptions="Center" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapCircle" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            
+
+            <Grid RowSpacing="0" ColumnSpacing="2"
+                  Grid.Row="0" Grid.Column="1"
+                  Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <BoxView x:Name="BvCircleNotRead"
+                         Grid.Column="0"
+                         CornerRadius="5"
+                         BackgroundColor="{StaticResource PrimaryColor}"
+                         HeightRequest="10" WidthRequest="10"
+                         VerticalOptions="Center" HorizontalOptions="Center" />
+                <Label x:Name="LblSourceName"
+                       Grid.Column="1"
+                       FontSize="16" TextColor="{StaticResource DarkFontColor}"
+                       MaxLines="1" LineBreakMode="TailTruncation"
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
+                       VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                <Label x:Name="LblDate"
+                       Grid.Column="2"
+                       FontSize="12" TextColor="{StaticResource SummaryTextColor}"
+                       MaxLines="1" LineBreakMode="TailTruncation"
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="End"
+                       VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+            </Grid>
+
+
+            <Label x:Name="LblSubject"
+                   Grid.Row="1" Grid.Column="1"
+                   FontSize="14" TextColor="{StaticResource DarkFontColor}"
+                   MaxLines="1" LineBreakMode="TailTruncation"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
+                   VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+            <Label x:Name="LblContent"
+                   Grid.Row="2" Grid.Column="1"
+                   FontSize="12" TextColor="{StaticResource SummaryTextColor}"
+                   MaxLines="2" LineBreakMode="TailTruncation"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
+                   VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+
+        </Grid>
+
+        <Grid x:Name="GridActions" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton x:Name="BtnRemove"
+                         Grid.Column="0"
+                         BackgroundColor="Transparent"
+                         Source="Bin.png"
+                         WidthRequest="30" HeightRequest="30"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+            <ImageButton x:Name="BtnMove"
+                         Grid.Column="1"
+                         BackgroundColor="Transparent"
+                         Source="Move.png"
+                         WidthRequest="30" HeightRequest="30"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+            <ImageButton x:Name="BtnNotRead"
+                         Grid.Column="2"
+                         BackgroundColor="Transparent"
+                         Source="NotRead.png"
+                         WidthRequest="30" HeightRequest="30"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+            <ImageButton x:Name="BtnTag"
+                         Grid.Column="3"
+                         BackgroundColor="Transparent"
+                         Source="Tag.png"
+                         WidthRequest="30" HeightRequest="30"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+            <ImageButton x:Name="BtnCancel"
+                         Grid.Column="4"
+                         BackgroundColor="Transparent"
+                         Source="Cancel.png"
+                         WidthRequest="30" HeightRequest="30"
+                         Padding="5"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <Grid x:Name="GridQuestion"
+              Grid.Row="0"
+              BackgroundColor="{StaticResource SecondaryBackgroundColor}"
+              IsVisible="False">
+
+            <Label x:Name="LblRemoveQuestion"
+                   Text="¿Desea eliminar este email?" TextColor="{StaticResource SummaryTextColor}" 
+                   FontSize="24" FontAttributes="Bold"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </Grid>
+
+        <Grid x:Name="GridAnswers"
+              ColumnSpacing="0"
+              Grid.Row="1"
+              BackgroundColor="{StaticResource SecondaryBackgroundColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Label x:Name="LblRemoveYes"
+                   Grid.Column="0"
+                   Text="SI" TextColor="{StaticResource PrimaryColor}" FontSize="30" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapRemoveYes" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <BoxView BackgroundColor="{StaticResource BorderColor}"
+                     Grid.Column="1" 
+                     WidthRequest="1"
+                     Margin="0,10"
+                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+            <Label x:Name="LblRemoveNo"
+                   Grid.Column="2"
+                   Text="NO" TextColor="{StaticResource AlertColor}" FontSize="30" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapRemoveNo" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </Grid>
+
+        <BoxView BackgroundColor="{StaticResource BorderColor}"
+                 Grid.Row="2" 
+                 HeightRequest="1"
+                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+    </Grid>
+</base:ReactiveViewCell>

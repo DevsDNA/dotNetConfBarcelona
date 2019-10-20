@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:base="clr-namespace:MailAnimations.Base"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      x:Class="MailAnimations.Controls.CustomSwitcher">
+  <ContentView.Content>
+        <Frame x:Name="FrameBackground"
+               BackgroundColor="Transparent"
+               BorderColor="{StaticResource BorderColor}"
+               HasShadow="False"
+               HeightRequest="36"
+               CornerRadius="18"
+               Padding="0">
+
+            <Grid x:Name="GridContent" 
+                  RowSpacing="0" ColumnSpacing="0"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="GridSelection"
+                      RowSpacing="0" ColumnSpacing="0"
+                      Margin="0" Padding="0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0" />
+                    </Grid.ColumnDefinitions>
+                    <BoxView x:Name="BvSelection"
+                             HeightRequest="36"
+                             CornerRadius="18" 
+                             TranslationX="0"
+                             BackgroundColor="{StaticResource PrimaryColor}"
+                             HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </Grid>
+
+                <Grid Grid.Column="0" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label x:Name="LblLeftSelectedText" 
+                           Opacity="1"
+                           Text="{Binding LeftText}"
+                           TextColor="{StaticResource LightFontColor}"
+                           LineBreakMode="TailTruncation"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label x:Name="LblLeftUnselectedText" 
+                           Opacity="0"
+                           Text="{Binding LeftText}"
+                           TextColor="{StaticResource DarkFontColor}"
+                           LineBreakMode="TailTruncation"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapLeft" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <Grid Grid.Column="1" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label x:Name="LblRightSelectedText" 
+                           Opacity="0"
+                           Text="{Binding RightText}"
+                           TextColor="{StaticResource LightFontColor}"
+                           LineBreakMode="TailTruncation"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label x:Name="LblRightUnselectedText" 
+                           Opacity="1"
+                           Text="{Binding RightText}"
+                           TextColor="{StaticResource DarkFontColor}"
+                           LineBreakMode="TailTruncation"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapRight" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</base:BaseContentView>

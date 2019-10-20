@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:base="clr-namespace:MailAnimations.Base"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                      xmlns:controls="clr-namespace:MailAnimations.Controls"
+                      x:Class="MailAnimations.Controls.CustomSearchEntry">
+  <ContentView.Content>
+        <Frame x:Name="FrameBackground"
+               BackgroundColor="Transparent"
+               BorderColor="{StaticResource BorderColor}"
+               HasShadow="False"
+               HeightRequest="36"
+               CornerRadius="18"
+               Padding="0">
+            <Grid x:Name="GridContent" 
+                  RowSpacing="0" ColumnSpacing="0"
+                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <controls:EntryBorderless x:Name="Entry" 
+                                          TextColor="{StaticResource DarkFontColor}"
+                                          Margin="20,0"
+                                          HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                <ffimageloading:CachedImage x:Name="ImgSearch" 
+                                            Grid.Column="1"
+                                            BackgroundColor="Transparent"
+                                            Source="Search.png"
+                                            Aspect="AspectFit"
+							                HeightRequest="20" WidthRequest="20"
+                                            HorizontalOptions="Center" VerticalOptions="Center" >
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapSearch" />
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</base:BaseContentView>
