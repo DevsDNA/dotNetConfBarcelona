@@ -57,8 +57,11 @@
             AiAllMails.IsVisible = ViewModel.IsLoadingMailList;
             AiAllMails.IsRunning = ViewModel.IsLoadingMailList;
 
-            await Task.WhenAll(LvAllMails.FadeTo(ViewModel.IsLoadingMailList ? 0 : 1),
-                               LvAllMails.ScaleTo(ViewModel.IsLoadingMailList ? 0 : 1));            
+            //DEMO
+            LvAllMails.Opacity = ViewModel.IsLoadingMailList ? 0 : 1;
+            LvAllMails.Scale = ViewModel.IsLoadingMailList ? 0 : 1;            
+            //await Task.WhenAll(LvAllMails.FadeTo(ViewModel.IsLoadingMailList ? 0 : 1),
+            //                   LvAllMails.ScaleTo(ViewModel.IsLoadingMailList ? 0 : 1));            
         }
 
         private async void ManageSummaryVisibility()
@@ -66,21 +69,30 @@
             AiSummary.IsVisible = ViewModel.IsLoadingSummary;
             AiSummary.IsRunning = ViewModel.IsLoadingSummary;
 
-            await Task.WhenAll(GridSummary.FadeTo(ViewModel.IsLoadingSummary ? 0 : 1),
-                               GridSummary.ScaleTo(ViewModel.IsLoadingSummary ? 0 : 1));
+            //DEMO
+            GridSummary.Opacity = ViewModel.IsLoadingSummary ? 0 : 1;
+            GridSummary.Scale = ViewModel.IsLoadingSummary ? 0 : 1;
+            //await Task.WhenAll(GridSummary.FadeTo(ViewModel.IsLoadingSummary ? 0 : 1),
+            //                   GridSummary.ScaleTo(ViewModel.IsLoadingSummary ? 0 : 1));
         }
 
         private async Task MailListSelectorSelection(bool showAllMails)
         {
             if (showAllMails)
             {
-                await Task.WhenAll(LvAllMails.TranslateTo(0, 0),
-                               LvNotReadMails.TranslateTo(DeviceDisplayInfo.ScreenHeight + 50, 0));
+                //DEMO
+                LvAllMails.TranslationX = 0;
+                LvNotReadMails.TranslationX = DeviceDisplayInfo.ScreenHeight + 50;
+                //await Task.WhenAll(LvAllMails.TranslateTo(0, 0),
+                //                   LvNotReadMails.TranslateTo(DeviceDisplayInfo.ScreenHeight + 50, 0));
             }
             else
             {
-                await Task.WhenAll(LvAllMails.TranslateTo(-(DeviceDisplayInfo.ScreenHeight + 50), 0),
-                               LvNotReadMails.TranslateTo(0, 0));
+                //DEMO
+                LvAllMails.TranslationX = -(DeviceDisplayInfo.ScreenHeight + 50);
+                LvNotReadMails.TranslationX = 0;
+                //await Task.WhenAll(LvAllMails.TranslateTo(-(DeviceDisplayInfo.ScreenHeight + 50), 0),
+                //                   LvNotReadMails.TranslateTo(0, 0));
             }
         }
 
@@ -88,16 +100,22 @@
         {
             if (GridMenu.TranslationY == 0)
             {
-                await Task.WhenAll(GridMenu.TranslateTo(0, 215),
-                                   BvMenuVisibility.FadeTo(0));
+                //DEMO
+                GridMenu.TranslationY = 215;
+                BvMenuVisibility.Opacity = 0;
+                //await Task.WhenAll(GridMenu.TranslateTo(0, 215),
+                //                   BvMenuVisibility.FadeTo(0));
                 BvMenuVisibility.IsVisible = false;
             }
             else
             {
                 BvMenuVisibility.IsVisible = true;
-                await Task.WhenAll(GridMenu.TranslateTo(0, 0),
-                                   BvMenuVisibility.FadeTo(0.5));
-            }            
+                //DEMO
+                GridMenu.TranslationY = 0;
+                BvMenuVisibility.Opacity = 0.5;
+                //await Task.WhenAll(GridMenu.TranslateTo(0, 0),
+                //                   BvMenuVisibility.FadeTo(0.5));
+            }
         }
     }
 }

@@ -125,29 +125,50 @@
         {
             if (GridActions.TranslationX == 0)
             {
-                await Task.WhenAll(GridContent.TranslateTo(0, 0),
-                                   GridActions.TranslateTo(-panelTranslation, 0));
+                //DEMO
+                GridContent.TranslationX = 0;
+                GridActions.TranslationX = -panelTranslation;
+                //await Task.WhenAll(GridContent.TranslateTo(0, 0),
+                //                   GridActions.TranslateTo(-panelTranslation, 0));
             }
             else
             {
-                await Task.WhenAll(GridContent.TranslateTo(panelTranslation, 0),
-                                   GridActions.TranslateTo(0, 0));
+                //DEMO
+                GridContent.TranslationX = panelTranslation;
+                GridActions.TranslationX = 0;
+                //await Task.WhenAll(GridContent.TranslateTo(panelTranslation, 0),
+                //                   GridActions.TranslateTo(0, 0));
             }
         }
 
         private async Task ShowRemovePanels()
         {
             isUpdatingSize = true;
-            await ShowRemoveQuestionPanel();
-            await ManageRemoveAnswerPanelVisibility(true);
+
+            //DEMO
+            GridActions.IsVisible = false;
+            GridQuestion.IsVisible = true;
+            Height = 90 + 90;
+            GridMain.RowDefinitions[1].Height = new GridLength(90, GridUnitType.Absolute);
+            //await ShowRemoveQuestionPanel();
+            //await ManageRemoveAnswerPanelVisibility(true);
+
             isUpdatingSize = false;
         }
 
         private async Task HideRemovePanels()
         {
             isUpdatingSize = true;
-            await ManageRemoveAnswerPanelVisibility(false);
-            await HideRemoveQuestionPanel();
+
+            //DEMO
+            Height = 90;
+            GridMain.RowDefinitions[1].Height = new GridLength(0, GridUnitType.Absolute);
+
+            //await ManageRemoveAnswerPanelVisibility(false);
+            //await HideRemoveQuestionPanel();
+            GridQuestion.IsVisible = false;
+            GridActions.IsVisible = true;
+
             isUpdatingSize = false;
         }
 
@@ -197,7 +218,15 @@
         private async Task RemoveViewCell()
         {
             isUpdatingSize = true;
-            await HideViewCell();
+
+            //DEMO
+            GridMain.RowDefinitions[0].Height = new GridLength(0, GridUnitType.Absolute);
+            GridMain.RowDefinitions[1].Height = new GridLength(0, GridUnitType.Absolute);
+            GridMain.RowDefinitions[2].Height = new GridLength(0, GridUnitType.Absolute);
+
+            Height = 0;
+            //await HideViewCell();
+
             isUpdatingSize = false;
         }
 

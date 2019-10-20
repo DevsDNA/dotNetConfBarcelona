@@ -46,9 +46,25 @@
         private async void Select()
         {
             if (IsLeftSelected)
-                await MoveToLeft();
+            {
+                //DEMO
+                LblRightSelectedText.Opacity = 0;
+                LblRightUnselectedText.Opacity = 1;
+                GridSelection.TranslationX = 0;
+                LblLeftSelectedText.Opacity = 1;
+                LblLeftUnselectedText.Opacity = 0;
+                //await MoveToLeft();
+            }
             else
-                await MoveToRight();
+            {
+                //DEMO
+                LblLeftSelectedText.Opacity = 0;
+                LblLeftUnselectedText.Opacity = 1;
+                GridSelection.TranslationX = GridContent.Width / 2;
+                LblRightSelectedText.Opacity = 1;
+                LblRightUnselectedText.Opacity = 0;
+                //await MoveToRight();
+            }
 
             SelectionChanged?.Invoke(this, IsLeftSelected);
         }

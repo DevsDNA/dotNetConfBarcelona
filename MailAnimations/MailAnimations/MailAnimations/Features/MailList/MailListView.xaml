@@ -6,10 +6,11 @@
                       xmlns:features="clr-namespace:MailAnimations.Features"
                       xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                       xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-                      xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
                       xmlns:controls="clr-namespace:MailAnimations.Controls"
                       x:Class="MailAnimations.Features.MailListView"
                       x:TypeArguments="features:MailListViewModel">
+    <!--DEMO
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"-->
     <ContentPage.Content>
         <Grid x:Name="GridContent"
               RowSpacing="0"
@@ -79,12 +80,13 @@
 
                 <ffimageloading:CachedImage x:Name="ImgProfilePicture" 
                                             Grid.Row="0" Grid.Column="0"
-                                            sharedTransitions:Transition.Name="profiletransition"
                                             BackgroundColor="Transparent"
                                             Source="Profile.png"
                                             Aspect="AspectFit"
 							                Margin="10,10,0,0" HeightRequest="50" WidthRequest="50"
                                             HorizontalOptions="Center" VerticalOptions="Center">
+                    <!--DEMO
+                    sharedTransitions:Transition.Name="profiletransition"-->
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation/>
                     </ffimageloading:CachedImage.Transformations>

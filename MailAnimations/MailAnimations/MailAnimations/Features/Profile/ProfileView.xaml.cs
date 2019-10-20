@@ -82,38 +82,39 @@
 
         private async Task ContentScrolled(double yOffset)
         {
-            if (yOffset > headerMaxScroll && 
-                -LblTitle.TranslationX > labelTitleMaxTranslation)
-            {
-                return;
-            }
+            //DEMO
+            //if (yOffset > headerMaxScroll && 
+            //    -LblTitle.TranslationX > labelTitleMaxTranslation)
+            //{
+            //    return;
+            //}
 
-            double scrollY = yOffset < 0 ? 0 : yOffset;
-            double labelTitleTranslation = labelTitleMaxTranslation * scrollY / headerMaxScroll;
-            double imageTranslationX = imgProfileMaxTranslationX * scrollY / headerMaxScroll;
-            double imageTranslationY = imgProfileMaxTranslationY * scrollY / headerMaxScroll;
-            double imageScale = 1 - imgProfileMinScaleDiff * scrollY / headerMaxScroll;
+            //double scrollY = yOffset < 0 ? 0 : yOffset;
+            //double labelTitleTranslation = labelTitleMaxTranslation * scrollY / headerMaxScroll;
+            //double imageTranslationX = imgProfileMaxTranslationX * scrollY / headerMaxScroll;
+            //double imageTranslationY = imgProfileMaxTranslationY * scrollY / headerMaxScroll;
+            //double imageScale = 1 - imgProfileMinScaleDiff * scrollY / headerMaxScroll;
 
-            Debug.WriteLine($"scrollY: {scrollY}");
-            Debug.WriteLine($"labelTitleTranslation: {labelTitleTranslation}");
-            Debug.WriteLine($"imageTranslationX: {imageTranslationX}");
-            Debug.WriteLine($"imageTranslationY: {imageTranslationY}");
-            Debug.WriteLine($"imageScale: {imageScale}");
+            //Debug.WriteLine($"scrollY: {scrollY}");
+            //Debug.WriteLine($"labelTitleTranslation: {labelTitleTranslation}");
+            //Debug.WriteLine($"imageTranslationX: {imageTranslationX}");
+            //Debug.WriteLine($"imageTranslationY: {imageTranslationY}");
+            //Debug.WriteLine($"imageScale: {imageScale}");
 
-            if (scrollY >= headerMaxScroll)
-            {
-                await Task.WhenAll(GridImageBackgroud.TranslateTo(0, -headerMaxScroll),
-                                   LblTitle.TranslateTo(-labelTitleMaxTranslation, 0),
-                                   ImgProfilePicture.TranslateTo(imgProfileMaxTranslationX, -imgProfileMaxTranslationY),
-                                   ImgProfilePicture.ScaleTo(1 - imgProfileMinScaleDiff));
-            }
-            else
-            {
-                await Task.WhenAll(GridImageBackgroud.TranslateTo(0, -scrollY),
-                                   LblTitle.TranslateTo(-labelTitleTranslation, 0),
-                                   ImgProfilePicture.TranslateTo(imageTranslationX, -imageTranslationY),
-                                   ImgProfilePicture.ScaleTo(imageScale));
-            }
+            //if (scrollY >= headerMaxScroll)
+            //{
+            //    await Task.WhenAll(GridImageBackgroud.TranslateTo(0, -headerMaxScroll),
+            //                       LblTitle.TranslateTo(-labelTitleMaxTranslation, 0),
+            //                       ImgProfilePicture.TranslateTo(imgProfileMaxTranslationX, -imgProfileMaxTranslationY),
+            //                       ImgProfilePicture.ScaleTo(1 - imgProfileMinScaleDiff));
+            //}
+            //else
+            //{
+            //    await Task.WhenAll(GridImageBackgroud.TranslateTo(0, -scrollY),
+            //                       LblTitle.TranslateTo(-labelTitleTranslation, 0),
+            //                       ImgProfilePicture.TranslateTo(imageTranslationX, -imageTranslationY),
+            //                       ImgProfilePicture.ScaleTo(imageScale));
+            //}
         }
     }
 }

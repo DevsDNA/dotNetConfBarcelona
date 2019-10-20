@@ -5,9 +5,10 @@
                       xmlns:features="clr-namespace:MailAnimations.Features"
                       xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                       xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-                      xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
                       x:Class="MailAnimations.Features.ProfileView"
                       x:TypeArguments="features:ProfileViewModel">
+    <!--DEMO
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LblBase" TargetType="Label" >
@@ -142,13 +143,14 @@
 
             <ffimageloading:CachedImage x:Name="ImgProfilePicture" 
                                             Grid.Row="0" Grid.RowSpan="2"
-                                            sharedTransitions:Transition.Name="profiletransition"
                                             BackgroundColor="Transparent"
                                             Source="Profile.png"
                                             Aspect="AspectFit"
 							                HeightRequest="100" WidthRequest="100"
                                             Margin="10,60,10,10"
                                             HorizontalOptions="Center" VerticalOptions="Start">
+                <!--DEMO
+                sharedTransitions:Transition.Name="profiletransition"-->
                 <ffimageloading:CachedImage.Transformations>
                     <fftransformations:CircleTransformation/>
                 </ffimageloading:CachedImage.Transformations>
