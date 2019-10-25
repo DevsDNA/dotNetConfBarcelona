@@ -125,7 +125,7 @@
         {
             if (GridActions.TranslationX == 0)
             {
-                //DEMO
+                //DEMO 6
                 GridContent.TranslationX = 0;
                 GridActions.TranslationX = -panelTranslation;
                 //await Task.WhenAll(GridContent.TranslateTo(0, 0),
@@ -133,7 +133,7 @@
             }
             else
             {
-                //DEMO
+                //DEMO 6
                 GridContent.TranslationX = panelTranslation;
                 GridActions.TranslationX = 0;
                 //await Task.WhenAll(GridContent.TranslateTo(panelTranslation, 0),
@@ -145,7 +145,7 @@
         {
             isUpdatingSize = true;
 
-            //DEMO
+            //DEMO 6
             GridActions.IsVisible = false;
             GridQuestion.IsVisible = true;
             Height = 90 + 90;
@@ -160,7 +160,7 @@
         {
             isUpdatingSize = true;
 
-            //DEMO
+            //DEMO 6
             Height = 90;
             GridMain.RowDefinitions[1].Height = new GridLength(0, GridUnitType.Absolute);
 
@@ -219,7 +219,7 @@
         {
             isUpdatingSize = true;
 
-            //DEMO
+            //DEMO 6
             GridMain.RowDefinitions[0].Height = new GridLength(0, GridUnitType.Absolute);
             GridMain.RowDefinitions[1].Height = new GridLength(0, GridUnitType.Absolute);
             GridMain.RowDefinitions[2].Height = new GridLength(0, GridUnitType.Absolute);

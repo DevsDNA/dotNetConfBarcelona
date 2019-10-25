@@ -57,7 +57,7 @@
             AiAllMails.IsVisible = ViewModel.IsLoadingMailList;
             AiAllMails.IsRunning = ViewModel.IsLoadingMailList;
 
-            //DEMO
+            //DEMO 7
             LvAllMails.Opacity = ViewModel.IsLoadingMailList ? 0 : 1;
             LvAllMails.Scale = ViewModel.IsLoadingMailList ? 0 : 1;            
             //await Task.WhenAll(LvAllMails.FadeTo(ViewModel.IsLoadingMailList ? 0 : 1),
@@ -69,7 +69,7 @@
             AiSummary.IsVisible = ViewModel.IsLoadingSummary;
             AiSummary.IsRunning = ViewModel.IsLoadingSummary;
 
-            //DEMO
+            //DEMO 7
             GridSummary.Opacity = ViewModel.IsLoadingSummary ? 0 : 1;
             GridSummary.Scale = ViewModel.IsLoadingSummary ? 0 : 1;
             //await Task.WhenAll(GridSummary.FadeTo(ViewModel.IsLoadingSummary ? 0 : 1),
@@ -80,7 +80,7 @@
         {
             if (showAllMails)
             {
-                //DEMO
+                //DEMO 2
                 LvAllMails.TranslationX = 0;
                 LvNotReadMails.TranslationX = DeviceDisplayInfo.ScreenHeight + 50;
                 //await Task.WhenAll(LvAllMails.TranslateTo(0, 0),
@@ -88,7 +88,7 @@
             }
             else
             {
-                //DEMO
+                //DEMO 2
                 LvAllMails.TranslationX = -(DeviceDisplayInfo.ScreenHeight + 50);
                 LvNotReadMails.TranslationX = 0;
                 //await Task.WhenAll(LvAllMails.TranslateTo(-(DeviceDisplayInfo.ScreenHeight + 50), 0),
@@ -100,7 +100,7 @@
         {
             if (GridMenu.TranslationY == 0)
             {
-                //DEMO
+                //DEMO 3
                 GridMenu.TranslationY = 215;
                 BvMenuVisibility.Opacity = 0;
                 //await Task.WhenAll(GridMenu.TranslateTo(0, 215),
@@ -110,7 +110,7 @@
             else
             {
                 BvMenuVisibility.IsVisible = true;
-                //DEMO
+                //DEMO 3
                 GridMenu.TranslationY = 0;
                 BvMenuVisibility.Opacity = 0.5;
                 //await Task.WhenAll(GridMenu.TranslateTo(0, 0),

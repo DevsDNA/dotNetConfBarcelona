@@ -82,7 +82,7 @@
 
         private async Task ContentScrolled(double yOffset)
         {
-            //DEMO
+            //DEMO 5
             //if (yOffset > headerMaxScroll && 
             //    -LblTitle.TranslationX > labelTitleMaxTranslation)
             //{

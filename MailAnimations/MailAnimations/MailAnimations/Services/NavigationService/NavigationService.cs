@@ -18,7 +18,7 @@ namespace MailAnimations.Services
 
         public Page GetInitialView()
         {
-            //DEMO
+            //DEMO 4
             NavigationPage navigationPage = new NavigationPage(new MailListView { ViewModel = new MailListViewModel() });
             //SharedTransitionNavigationPage navigationPage = new SharedTransitionNavigationPage(new MailListView { ViewModel = new MailListViewModel() });
             NavigationPage.SetHasNavigationBar(navigationPage.CurrentPage, false);

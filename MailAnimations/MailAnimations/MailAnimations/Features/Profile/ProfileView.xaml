@@ -7,7 +7,7 @@
                       xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                       x:Class="MailAnimations.Features.ProfileView"
                       x:TypeArguments="features:ProfileViewModel">
-    <!--DEMO
+    <!--DEMO 4
     xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"-->
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -149,7 +149,7 @@
 							                HeightRequest="100" WidthRequest="100"
                                             Margin="10,60,10,10"
                                             HorizontalOptions="Center" VerticalOptions="Start">
-                <!--DEMO
+                <!--DEMO 4
                 sharedTransitions:Transition.Name="profiletransition"-->
                 <ffimageloading:CachedImage.Transformations>
                     <fftransformations:CircleTransformation/>

@@ -9,7 +9,7 @@
                       xmlns:controls="clr-namespace:MailAnimations.Controls"
                       x:Class="MailAnimations.Features.MailListView"
                       x:TypeArguments="features:MailListViewModel">
-    <!--DEMO
+    <!--DEMO 4
     xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"-->
     <ContentPage.Content>
         <Grid x:Name="GridContent"
@@ -85,7 +85,7 @@
                                             Aspect="AspectFit"
 							                Margin="10,10,0,0" HeightRequest="50" WidthRequest="50"
                                             HorizontalOptions="Center" VerticalOptions="Center">
-                    <!--DEMO
+                    <!--DEMO 4
                     sharedTransitions:Transition.Name="profiletransition"-->
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation/>

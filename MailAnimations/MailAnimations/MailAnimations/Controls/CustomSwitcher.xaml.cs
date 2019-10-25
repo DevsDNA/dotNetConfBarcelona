@@ -47,7 +47,7 @@
         {
             if (IsLeftSelected)
             {
-                //DEMO
+                //DEMO 1
                 LblRightSelectedText.Opacity = 0;
                 LblRightUnselectedText.Opacity = 1;
                 GridSelection.TranslationX = 0;
@@ -57,7 +57,7 @@
             }
             else
             {
-                //DEMO
+                //DEMO 1
                 LblLeftSelectedText.Opacity = 0;
                 LblLeftUnselectedText.Opacity = 1;
                 GridSelection.TranslationX = GridContent.Width / 2;
